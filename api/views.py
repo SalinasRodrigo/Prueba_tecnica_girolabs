@@ -1,7 +1,9 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import status
 from .models import Product
 from .serializaers import ProductSerializer
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -38,80 +40,42 @@ def getRoutes(request):
             "body": None,
             "description": "Deletes and exiting product",
         },
-
-        {
-            "Endpoint": "/users/",
-            "method": "GET",
-            "body": None,
-            "description": "Returns an array of users",
-        },
-        {
-            "Endpoint": "/user/",
-            "method": "POST",
-            "body": None,
-            "description": "Returns a single product user",
-        },
-        {
-            "Endpoint": "/users/create/",
-            "method": "POST",
-            "body": {"body": ""},
-            "description": "Creates new user with data sent in post request",
-        },
-        {
-            "Endpoint": "/user/update/",
-            "method": "PUT",
-            "body": {"body": ""},
-            "description": "Update User password with data sent in post request",
-        },
     ]
     return Response(routes)
 
 
 @api_view(["GET"])
 def getProducts(request):
+    print(request.GET.get('mesage'))
     products = Product.objects.all()
     serial_products = ProductSerializer(products, many=True)
-    return Response(serial_products.data)
+    return Response(serial_products.data, status=status.HTTP_200_OK)
 
-
-@api_view(["GET"])
-def getOneProduct(request, pk):
-    product = Product.objects.get(id=pk)
-    serial_product = ProductSerializer(product, many=False)
-    return Response(serial_product.data)
-
-
-@api_view(["PUT"])
-def updateProduct(request, pk):
-    data = request.data
-    product = Product.objects.get(id=pk)
-    serialProduct = ProductSerializer(instance=product, data=data)
-
-    if serialProduct.is_valid():
-        serialProduct.save()
-
-    return Response(serialProduct.data)
-
+@api_view(["GET", "PUT", "DELETE"])
+def oneProduct (request, pk):
+    product = get_object_or_404(Product, id=pk)
+    
+    if request.method == "GET":
+        serial_product = ProductSerializer(product)
+        return Response(serial_product.data, status=status.HTTP_200_OK)
+    
+    elif request.method == "PUT":
+        serial_product = ProductSerializer(instance=product, data=request.data)
+        if serial_product.is_valid():
+            serial_product.save()
+            return Response(serial_product.data, status=status.HTTP_200_OK)
+        return Response(serial_product.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == "DELETE":
+        product.delete()
+        return Response({"message": "Product deleted successfully"}, status=status.HTTP_200_OK)
 
 @api_view(["POST"])
 def createProduct(request):
     data = request.data
-    product = Product.objects.create(
-        title=data["title"],
-        description=data["description"],
-        price=data["price"],
-        discountPercentage=data["discountPercentage"],
-        stock=data["stock"],
-        brand=data["brand"],
-        category=data["category"],
-        thumbnail=data["thumbnail"],
-    )
-    serialProduct = ProductSerializer(product, many=False)
-    return Response(serialProduct.data)
-
-
-@api_view(["DELETE"])
-def deleteProduct(request, pk):
-    product = Product.objects.get(id=pk)
-    product.delete()
-    return Response("delete succese")
+    serialProduct = ProductSerializer(data=data, many=False)
+    print(data, serialProduct)
+    if serialProduct.is_valid():  
+        serialProduct.save() 
+        return Response(serialProduct.data, status=status.HTTP_201_CREATED)
+    return Response(serialProduct.errors, status=status.HTTP_400_BAD_REQUEST)
