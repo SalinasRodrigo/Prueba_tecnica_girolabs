@@ -2,7 +2,13 @@
   display: grid;
   grid-template-columns: repeat(
     auto-fill,
-    minmax(240px, 1fr)
+    minmax(232px, 1fr)
   );
+  gap: 10px;
   box-sizing: border-box; 
+}
+
+.container {
+  max-width: 100%;
+  padding: 20px;
 }

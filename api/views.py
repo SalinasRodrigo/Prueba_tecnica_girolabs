@@ -46,13 +46,11 @@ def getRoutes(request):
 
 @api_view(["GET"])
 def getProducts(request):
-    # Recuperar parámetros de la URL
-    title = request.GET.get('title')  # Filtrar por título
-    rating = request.GET.get('rating')  # Filtrar por categoría
-    min_price = request.GET.get('min_price')  # Precio mínimo
-    max_price = request.GET.get('max_price')  # Precio máximo
+    title = request.GET.get('title')  
+    rating = request.GET.get('rating')  
+    min_price = request.GET.get('min_price')  
+    max_price = request.GET.get('max_price')  
 
-    # Crear un diccionario de filtros
     filters = {}
     if title:
         filters['title__icontains'] = title 

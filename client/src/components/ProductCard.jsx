@@ -3,7 +3,7 @@ import { useCart } from "../hooks/useCart";
 import { AddToCartIcon, RemoveFromCartIcon } from "./Icons";
 import "./ProductCard.css";
 import { formatPrice } from "../utility";
-
+import StarRatings from "react-star-ratings";
 
 export const ProductCard = ({ product }) => {
   const { cart, addToCart, removeFromCart } = useCart();
@@ -12,9 +12,12 @@ export const ProductCard = ({ product }) => {
     return cart.some((item) => item.id === product.id);
   };
 
+  const handleClick = () => {
+    console.log("hola");
+  };
 
   return (
-    <div>
+    <div onClick={handleClick}>
       <span className="discount">-{product.discountPercentage}%</span>
       <div key={product.id} className="product-card">
         <div className="thumbnail">
@@ -23,13 +26,20 @@ export const ProductCard = ({ product }) => {
             <div>
               {checkProductInCart(product) ? (
                 <button
-                  onClick={() => removeFromCart(product)}
-                  style={{ color: "#242424", backgroundColor: "#ffffff" }}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Detiene la propagación del evento hacia los padres
+                    removeFromCart(product);
+                  }}
                 >
                   <RemoveFromCartIcon />
                 </button>
               ) : (
-                <button onClick={() => addToCart(product)}>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Detiene la propagación del evento hacia los padres
+                    addToCart(product);
+                  }}
+                >
                   <AddToCartIcon />
                 </button>
               )}
@@ -37,7 +47,14 @@ export const ProductCard = ({ product }) => {
           </div>
         </div>
         <h5>{product.title}</h5>
-        <small className="text">{product.description}</small>
+        <StarRatings
+          rating={product.rating}
+          starRatedColor="#fdcb6e"
+          starEmptyColor="#d4d4d8"
+          numberOfStars={5}
+          starDimension="20px"
+          starSpacing="4px"
+        />
         <div className="price">
           <b>
             {formatPrice(

@@ -10,6 +10,7 @@
 - [ ] Carta de producto.
 - [ ] Grid de productos.
 - [ ] Detalles de producto.
+- [x] Ordenar.
 - [x] Filtro.
 - [x] Busqueda.
 - [ ] Carrito.
