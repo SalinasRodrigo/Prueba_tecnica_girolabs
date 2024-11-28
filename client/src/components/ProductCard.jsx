@@ -2,6 +2,7 @@
 import { useCart } from "../hooks/useCart";
 import { AddToCartIcon, RemoveFromCartIcon } from "./Icons";
 import "./ProductCard.css";
+import { formatPrice } from "../utility";
 
 
 export const ProductCard = ({ product }) => {
@@ -9,14 +10,6 @@ export const ProductCard = ({ product }) => {
 
   const checkProductInCart = (product) => {
     return cart.some((item) => item.id === product.id);
-  };
-  
-  const formatPrice = (value) => {
-    return new Intl.NumberFormat("es-PY", {
-      style: "currency",
-      currency: "PYG",
-      useGrouping: true,
-    }).format(value);
   };
 
 

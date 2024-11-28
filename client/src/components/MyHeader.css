@@ -4,7 +4,7 @@ header{
   width: 100dvw;
   height: 10dvh;
   background-color: #2d2d2d;
-  padding: 0rem 3rem;
+  padding: 0rem 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,6 +12,7 @@ header{
 
   h1{
     margin: 0;
+    color: #fff;
   }
 
   .btns{
@@ -20,4 +21,58 @@ header{
     justify-content: space-between;
     gap: 20px;
   }
+
+  .btn{
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: .5rem;
+    transition: all .3s ease;
+  }
+
+  .btn:hover {
+    scale: 1.1;
+  }
+
+  .search{
+    width: 600px;
+    color: #555;
+    background-color: #fff;
+    display: flex;
+    padding: 4px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+  }
+
+  input[type="text"]{
+    width: 600px;
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 7px 8px;
+    font-size: 14px;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: inherit;
+  }
+
+  input[type="text"]:focus-visible{
+    outline: none;
+  }
+
+  .search-btn{
+    background-color: #2d2d2d;
+    color: #fff;
+    border: none;
+    border-radius: 5rem;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    svg{
+      scale: 1.5;
+    }
+  }
+
 }

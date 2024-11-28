@@ -1,3 +1,5 @@
+import { Cart } from './Cart'
+import SearchIcon from './Icons'
 import './MyHeader.css'
 export const MyHeader = () => {
 
@@ -6,11 +8,11 @@ export const MyHeader = () => {
       <h1>MiniStore 🛒</h1>
       <form className='search'>
         <input type="text" />
-        <input type='submit' />  
+        <button className='search-btn' type='submit'><SearchIcon/></button>
       </form>
       <div className='btns'>
-        <button>login</button>
-        <button>Cart</button>
+        <button className='btn'>Login</button>
+        <Cart/>
       </div>
     </header>
   )
