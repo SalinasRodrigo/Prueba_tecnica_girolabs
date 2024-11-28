@@ -1,29 +1,48 @@
-import "./Filtro.css"
+import { useCart } from "../hooks/useCart";
+import "./Filtro.css";
 
 export const Filtro = () => {
+  const { filter, setFilter } = useCart();
 
-  return(
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const remove = ["min_price", "max_price", "rating"];
+    const newFilters = filter.filter((item) => {
+      //Elimina instancias anteriores de filtrados del mismo tipo.
+      const [word1] = item.split("="); 
+      return !remove.includes(word1);
+    });
+
+    const newState = [
+      ...newFilters,
+      `min_price=${event.target.min_price.value}`,
+      `max_price=${event.target.max_price.value}`,
+      `rating=${event.target.rating.value}`,
+    ];
+
+    setFilter(newState);
+  };
+
+  return (
     <aside className="filtro">
       <h3>Filtrar por</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="precio">Precio</label>
           <div className="precio">
-            <input type="number" name="precio-min"/>
+            <input type="number" name="min_price" />
             <span>-</span>
-            <input type="number" name="precio-max"/>
+            <input type="number" name="max_price" />
           </div>
         </div>
         <div>
-          <label htmlFor="val">Valoracio</label>
+          <label htmlFor="val">Valoracio minima</label>
           <div className="val">
-            <input type="number" name="val-min" id="val-min" min={0} max={5}/>
-            <span>-</span>
-            <input type="number" name="val-max" id="val-max" min={0} max={5}/>
+            <input type="number" name="val-min" id="rating" min={0} max={5} />
           </div>
         </div>
-        <input type="submit"  />
+        <input type="submit" value={"Aplicar"} />
       </form>
     </aside>
-  )
-}
+  );
+};

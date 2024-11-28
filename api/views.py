@@ -46,8 +46,25 @@ def getRoutes(request):
 
 @api_view(["GET"])
 def getProducts(request):
-    print(request.GET.get('mesage'))
-    products = Product.objects.all()
+    # Recuperar parámetros de la URL
+    title = request.GET.get('title')  # Filtrar por título
+    rating = request.GET.get('rating')  # Filtrar por categoría
+    min_price = request.GET.get('min_price')  # Precio mínimo
+    max_price = request.GET.get('max_price')  # Precio máximo
+
+    # Crear un diccionario de filtros
+    filters = {}
+    if title:
+        filters['title__icontains'] = title 
+    if rating:
+        filters['rating__gte'] = rating 
+    if min_price:
+        filters['price__gte'] = min_price 
+    if max_price:
+        filters['price__lte'] = max_price  
+
+    products = Product.objects.filter(**filters)
+    print("FILTROS:\n", filters,"\n\nPRODUCTOS:\n", products )
     serial_products = ProductSerializer(products, many=True)
     return Response(serial_products.data, status=status.HTTP_200_OK)
 
@@ -73,9 +90,15 @@ def oneProduct (request, pk):
 @api_view(["POST"])
 def createProduct(request):
     data = request.data
+    if isinstance(data, list):  
+        serialProducts = ProductSerializer(data=data, many=True)
+        if serialProducts.is_valid():
+            serialProducts.save()
+            return Response(serialProducts.data, status=status.HTTP_201_CREATED)
+        return Response(serialProducts.errors, status=status.HTTP_400_BAD_REQUEST)
     serialProduct = ProductSerializer(data=data, many=False)
-    print(data, serialProduct)
-    if serialProduct.is_valid():  
-        serialProduct.save() 
+    if serialProduct.is_valid():
+        serialProduct.save()
         return Response(serialProduct.data, status=status.HTTP_201_CREATED)
+    
     return Response(serialProduct.errors, status=status.HTTP_400_BAD_REQUEST)

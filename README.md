@@ -7,18 +7,18 @@
 - [ ] Conexion back-front.
 
 ### Front
-- [ ] Carte de producto.
+- [ ] Carta de producto.
 - [ ] Grid de productos.
 - [ ] Detalles de producto.
-- [ ] Filtro.
-- [ ] Busqueda.
+- [x] Filtro.
+- [x] Busqueda.
 - [ ] Carrito.
 - [ ] Main page.
 
 ### Back
-- [ ] Melos.
-- [ ] Vistas.
-- [ ] Rutas.
+- [x] Modelos.
+- [x] Vistas.
+- [x] Rutas.
 
 ### Opcional
 

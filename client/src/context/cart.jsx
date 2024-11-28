@@ -8,13 +8,21 @@ export const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cart, setCart] = useState(cartInitialState);
   const [productos, setProductos] = useState([]);
+  const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     getProducts();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
 
   const getProducts = () => {
-    fetch("/api/products/")
+    let productFilter = "";
+    filter.length > 1
+      ? (productFilter = filter.join("&"))
+      : (productFilter = filter.join(""));
+    fetch(`/api/products/?${productFilter}`, {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((response) => {
         const products = response;
@@ -55,6 +63,22 @@ export function CartProvider({ children }) {
     window.localStorage.setItem("cart", JSON.stringify([]));
   };
 
+  // const addProductsFilter = (newFilter, remove) => {
+  //   const newFilters = filter.filter((item) => { //Elimina instancias anteriores de filtrados
+  //       const [word1] = item.split("=");         //del mismo tipo.
+  //       return word1 != remove;
+  //     })
+  //   setFilter([...newFilters, newFilter]);
+  // };
+  // const removeProductsFilter = (remove) => {
+  //   const newFilters = structuredClone(filter)
+  //   const removed = newFilters.filter((item) => { //Elimina instancias anteriores de filtrados 
+  //     const [word1] = item.split("=");            //del mismo tipo.
+  //     return word1 != remove;
+  //   })
+  //   setFilter(removed)
+  //};
+
   return (
     <CartContext.Provider
       value={{
@@ -64,6 +88,9 @@ export function CartProvider({ children }) {
         addToCart,
         clearCart,
         removeFromCart,
+        filter,
+        setFilter,
+        getProducts
       }}
     >
       {children}
