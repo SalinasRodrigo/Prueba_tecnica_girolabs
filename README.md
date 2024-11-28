@@ -7,7 +7,7 @@
 - [ ] Conexion back-front.
 
 ### Front
-- [ ] Carta de producto.
+- [x] Carta de producto.
 - [ ] Grid de productos.
 - [ ] Detalles de producto.
 - [x] Ordenar.
