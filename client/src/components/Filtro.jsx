@@ -1,8 +1,9 @@
-import { useCart } from "../hooks/useCart";
+
+import { useProduct } from "../hooks/useProduct";
 import "./Filtro.css";
 
 export const Filtro = () => {
-  const { filter, setFilter } = useCart();
+  const { filter, setFilter } = useProduct();
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -1,9 +1,9 @@
-import { useCart } from "../hooks/useCart";
+import { useProduct } from "../hooks/useProduct";
 import { ProductCard } from "./ProductCard";
 import "./ProductList.css";
 
 export const ProductList = () => {
-  const { sortedProducts } = useCart();
+  const { sortedProducts } = useProduct();
 
   return (
     <div className="container">

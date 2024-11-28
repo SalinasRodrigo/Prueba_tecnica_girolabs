@@ -1,11 +1,11 @@
 
 import { Filtro } from "../components/Filtro";
 import { ProductList } from "../components/ProductsList";
-import { useCart } from "../hooks/useCart";
+import { useProduct } from "../hooks/useProduct";
 import "./SearchPage.css";
 
 export const SearchPage = () => {
-  const {sortCriteria, setSortCriteria } = useCart()
+  const {sortCriteria, setSortCriteria } = useProduct()
   const handleSort = (value) => {
     const newCriteria = {
       criteria: value,

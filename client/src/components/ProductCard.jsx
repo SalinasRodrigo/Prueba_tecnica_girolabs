@@ -4,6 +4,7 @@ import { AddToCartIcon, RemoveFromCartIcon } from "./Icons";
 import "./ProductCard.css";
 import { formatPrice } from "../utility";
 import StarRatings from "react-star-ratings";
+import { Link } from "react-router-dom";
 
 export const ProductCard = ({ product }) => {
   const { cart, addToCart, removeFromCart } = useCart();
@@ -12,12 +13,8 @@ export const ProductCard = ({ product }) => {
     return cart.some((item) => item.id === product.id);
   };
 
-  const handleClick = () => {
-    console.log("hola");
-  };
-
   return (
-    <div onClick={handleClick}>
+    <Link to={`/product/${product.id}`}>
       <span className="discount">-{product.discountPercentage}%</span>
       <div key={product.id} className="product-card">
         <div className="thumbnail">
@@ -27,7 +24,7 @@ export const ProductCard = ({ product }) => {
               {checkProductInCart(product) ? (
                 <button
                   onClick={(e) => {
-                    e.stopPropagation(); // Detiene la propagación del evento hacia los padres
+                    e.preventDefault(); // Detiene la propagación del evento hacia los padres
                     removeFromCart(product);
                   }}
                 >
@@ -36,7 +33,7 @@ export const ProductCard = ({ product }) => {
               ) : (
                 <button
                   onClick={(e) => {
-                    e.stopPropagation(); // Detiene la propagación del evento hacia los padres
+                    e.preventDefault(); // Detiene la propagación del evento hacia los padres
                     addToCart(product);
                   }}
                 >
@@ -69,6 +66,6 @@ export const ProductCard = ({ product }) => {
           </small>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

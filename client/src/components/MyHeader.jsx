@@ -1,11 +1,11 @@
 import { useCallback, useRef } from "react";
-import { useCart } from "../hooks/useCart";
 import { Cart } from "./Cart";
 import SearchIcon from "./Icons";
 import "./MyHeader.css";
 import debounce from "just-debounce-it";
+import { useProduct } from "../hooks/useProduct";
 export const MyHeader = () => {
-  const { filter, setFilter } = useCart();
+  const { filter, setFilter } = useProduct();
   const inputRef = useRef(null);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
