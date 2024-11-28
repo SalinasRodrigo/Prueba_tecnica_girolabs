@@ -5,6 +5,7 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=True)
     price = models.BigIntegerField()
     discountPercentage = models.FloatField()
+    rating = models.PositiveSmallIntegerField()
     stock = models.IntegerField()
     brand = models.CharField(max_length=100, null=False)
     category = models.CharField(max_length=100, null=False)
