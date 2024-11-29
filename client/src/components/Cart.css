@@ -74,6 +74,7 @@
     cursor: pointer;
     color: #2d2d2d;
     background-color: #fff;
+    transition: all .5s;
 
   }
 
