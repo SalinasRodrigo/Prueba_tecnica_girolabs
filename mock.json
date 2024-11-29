@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Smartphone X100",
+    "description": "Un smartphone de alta gama con pantalla OLED y procesador rápido.",
+    "price": 850000,
+    "discountPercentage": 10.5,
+    "rating": 4.8,
+    "stock": 120,
+    "brand": "TechBrand",
+    "category": "Electronics",
+    "thumbnail": "https://example.com/images/smartphone_x100.jpg"
+  },
+  {
+    "title": "Auriculares Pro",
+    "description": "Auriculares inalámbricos con cancelación de ruido activa.",
+    "price": 250000,
+    "discountPercentage": 15.0,
+    "rating": 4.5,
+    "stock": 50,
+    "brand": "SoundWave",
+    "category": "Audio",
+    "thumbnail": "https://example.com/images/auriculares_pro.jpg"
+  },
+  {
+    "title": "Laptop Gamer Z",
+    "description": "Laptop potente diseñada para videojuegos y productividad.",
+    "price": 1500000,
+    "discountPercentage": 12.0,
+    "rating": 4.7,
+    "stock": 30,
+    "brand": "GameTech",
+    "category": "Computers",
+    "thumbnail": "https://example.com/images/laptop_gamer_z.jpg"
+  },
+  {
+    "title": "Cámara Reflex D500",
+    "description": "Cámara profesional con lente intercambiable y alta resolución.",
+    "price": 1200000,
+    "discountPercentage": 8.5,
+    "rating": 4.6,
+    "stock": 15,
+    "brand": "PhotoPro",
+    "category": "Photography",
+    "thumbnail": "https://example.com/images/camera_d500.jpg"
+  },
+  {
+    "title": "Televisor 4K Ultra",
+    "description": "Televisor inteligente con resolución 4K y HDR.",
+    "price": 900000,
+    "discountPercentage": 10.0,
+    "rating": 4.4,
+    "stock": 20,
+    "brand": "VisionPlus",
+    "category": "Electronics",
+    "thumbnail": "https://example.com/images/tv_4k_ultra.jpg"
+  },
+  {
+    "title": "Reloj Inteligente Fit",
+    "description": "Reloj inteligente con monitoreo de actividad y notificaciones.",
+    "price": 150000,
+    "discountPercentage": 20.0,
+    "rating": 4.2,
+    "stock": 80,
+    "brand": "WearableTech",
+    "category": "Wearables",
+    "thumbnail": "https://example.com/images/reloj_fit.jpg"
+  },
+  {
+    "title": "Mouse Inalámbrico Pro",
+    "description": "Mouse ergonómico con conectividad inalámbrica y batería recargable.",
+    "price": 60000,
+    "discountPercentage": 5.0,
+    "rating": 4.3,
+    "stock": 100,
+    "brand": "ClickMaster",
+    "category": "Accessories",
+    "thumbnail": "https://example.com/images/mouse_pro.jpg"
+  },
+  {
+    "title": "Parlante Bluetooth XL",
+    "description": "Parlante portátil con sonido envolvente y batería de larga duración.",
+    "price": 200000,
+    "discountPercentage": 18.0,
+    "rating": 4.6,
+    "stock": 40,
+    "brand": "SoundWave",
+    "category": "Audio",
+    "thumbnail": "https://example.com/images/parlante_bluetooth.jpg"
+  },
+  {
+    "title": "Tablet E10",
+    "description": "Tablet económica con pantalla HD y batería de larga duración.",
+    "price": 350000,
+    "discountPercentage": 12.5,
+    "rating": 4.1,
+    "stock": 25,
+    "brand": "TechBrand",
+    "category": "Tablets",
+    "thumbnail": "https://example.com/images/tablet_e10.jpg"
+  },
+  {
+    "title": "Cafetera Automática",
+    "description": "Cafetera programable con sistema de auto-limpieza.",
+    "price": 250000,
+    "discountPercentage": 15.0,
+    "rating": 4.7,
+    "stock": 60,
+    "brand": "KitchenPro",
+    "category": "Appliances",
+    "thumbnail": "https://example.com/images/cafetera_automatica.jpg"
+  }
+]
