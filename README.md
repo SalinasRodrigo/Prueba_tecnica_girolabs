@@ -4,17 +4,16 @@
 ## Todo
 
 - [x] Setup inicial.
-- [ ] Conexion back-front.
+- [x] Conexion back-front.
 
 ### Front
 - [x] Carta de producto.
 - [ ] Grid de productos.
-- [ ] Detalles de producto.
+- [x] Detalles de producto.
 - [x] Ordenar.
 - [x] Filtro.
 - [x] Busqueda.
-- [ ] Carrito.
-- [ ] Main page.
+- [x] Carrito.
 
 ### Back
 - [x] Modelos.
