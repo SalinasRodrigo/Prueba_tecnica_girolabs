@@ -1,5 +1,7 @@
 
 .filtro{
+  position: sticky;
+  top: 10dvh;
   height: 90dvh;
   padding: 20px 20px;  
   display: flex;

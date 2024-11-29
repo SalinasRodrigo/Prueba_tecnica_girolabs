@@ -4,6 +4,7 @@ import SearchIcon from "./Icons";
 import "./MyHeader.css";
 import debounce from "just-debounce-it";
 import { useProduct } from "../hooks/useProduct";
+import { Link } from "react-router-dom";
 export const MyHeader = () => {
   const { filter, setFilter } = useProduct();
   const inputRef = useRef(null);
@@ -32,7 +33,9 @@ export const MyHeader = () => {
 
   return (
     <header>
-      <h1>MiniStore 🛒</h1>
+      <Link to={'/'}>
+        <h1>MiniStore 🛒</h1>
+      </Link>
       <form className="search" id="search">
         <input
           type="text"
