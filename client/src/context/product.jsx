@@ -37,27 +37,11 @@ export function ProductProvider({ children }) {
         setProducto(product);
       });
   };
-  // const addProductsFilter = (newFilter, remove) => {
-  //   const newFilters = filter.filter((item) => { //Elimina instancias anteriores de filtrados
-  //       const [word1] = item.split("=");         //del mismo tipo.
-  //       return word1 != remove;
-  //     })
-  //   setFilter([...newFilters, newFilter]);
-  // };
-  // const removeProductsFilter = (remove) => {
-  //   const newFilters = structuredClone(filter)
-  //   const removed = newFilters.filter((item) => { //Elimina instancias anteriores de filtrados
-  //     const [word1] = item.split("=");            //del mismo tipo.
-  //     return word1 != remove;
-  //   })
-  //   setFilter(removed)
-  //};
-
   useMemo(() => {
     console.log(productos, sortCriteria)
     const sorted = [...productos].sort((a, b) => {
       if (sortCriteria.criteria) {
-        return sortCriteria.asc
+        return !sortCriteria.asc
           ? a[sortCriteria.criteria] - b[sortCriteria.criteria]
           : b[sortCriteria.criteria] - a[sortCriteria.criteria];
       }
@@ -65,12 +49,6 @@ export function ProductProvider({ children }) {
     });
     setSortedProducts(sorted);
   }, [sortCriteria, productos]);
-
-  // const sortedProducts = useMemo(() => {
-  //   return sort
-  //     ? [...productos].sort((a, b) => a.title.localeCompare(b.title))
-  //     : productos
-  // }, [sort, filter])
 
   return (
     <ProductContext.Provider
