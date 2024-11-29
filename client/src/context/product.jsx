@@ -38,7 +38,6 @@ export function ProductProvider({ children }) {
       });
   };
   useMemo(() => {
-    console.log(productos, sortCriteria)
     const sorted = [...productos].sort((a, b) => {
       if (sortCriteria.criteria) {
         return !sortCriteria.asc

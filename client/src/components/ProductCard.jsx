@@ -15,7 +15,7 @@ export const ProductCard = ({ product }) => {
 
   return (
     <Link to={`/product/${product.id}`}>
-      <span className="discount">-{product.discountPercentage}%</span>
+      {product.discountPercentage > 0 ? <span className="discount">-{product.discountPercentage}%</span>:<></>}
       <div key={product.id} className="product-card">
         <div className="thumbnail">
           <img src={product.thumbnail} alt={product.title} />
