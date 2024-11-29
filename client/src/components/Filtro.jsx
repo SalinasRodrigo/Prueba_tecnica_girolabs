@@ -28,7 +28,7 @@ export const Filtro = () => {
     <aside className="filtro">
       <h3>Filtrar por</h3>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="inp-element">
           <label htmlFor="precio">Precio</label>
           <div className="precio">
             <input type="number" name="min_price" />
@@ -36,13 +36,13 @@ export const Filtro = () => {
             <input type="number" name="max_price" />
           </div>
         </div>
-        <div>
+        <div className="inp-element">
           <label htmlFor="val">Valoracio minima</label>
           <div className="val">
             <input type="number" name="val-min" id="rating" min={0} max={5} />
           </div>
         </div>
-        <input type="submit" value={"Aplicar"} />
+        <button>Aplicar</button>
       </form>
     </aside>
   );

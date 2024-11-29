@@ -14,7 +14,27 @@
     width: 70px;
     height: 25px;
   }
+
+  .inp-element{
+    margin-bottom: 30px;
+    width: 100%;
+    border-bottom: 1px solid #bbbbbb;
+  }
   
+  button{
+    background-color: #fff;
+    color: #2d2d2d;
+    padding: 10px 20px;
+    border: 1px solid #2d2d2d;
+    border-radius: .5rem;
+    transition: all .5s;
+  }
+
+  button:hover{
+    background-color: #2d2d2d;
+    color: #fff;
+  }
+
   form{
     display: flex;
     flex-direction: column;
