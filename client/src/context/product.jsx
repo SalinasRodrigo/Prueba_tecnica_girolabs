@@ -1,19 +1,16 @@
 /* eslint-disable react/prop-types */
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ProductContext = createContext();
 
 export function ProductProvider({ children }) {
   const [productos, setProductos] = useState([]);
+  const [producto, setProducto] = useState([]);
   const [sortedProducts, setSortedProducts] = useState(productos);
   const [filter, setFilter] = useState([]);
   const [sortCriteria, setSortCriteria] = useState({ criteria: null, asc: true });
 
-  useEffect(() => {
-    getProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter]);
 
   const getProducts = () => {
     let productFilter = "";
@@ -26,8 +23,18 @@ export function ProductProvider({ children }) {
       .then((res) => res.json())
       .then((response) => {
         const products = response;
-        console.log(products);
         setProductos(products);
+      });
+  };
+
+  const getOneProduct = (id) => {
+    fetch(`/api/products/${id}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        const product = response;
+        setProducto(product);
       });
   };
   // const addProductsFilter = (newFilter, remove) => {
@@ -75,7 +82,9 @@ export function ProductProvider({ children }) {
         getProducts,
         sortedProducts,
         sortCriteria,
-        setSortCriteria
+        setSortCriteria,
+        getOneProduct,
+        producto
       }}
     >
       {children}

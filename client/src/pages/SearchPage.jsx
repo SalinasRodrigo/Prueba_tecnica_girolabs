@@ -1,11 +1,17 @@
 
+import { useEffect } from "react";
 import { Filtro } from "../components/Filtro";
 import { ProductList } from "../components/ProductsList";
 import { useProduct } from "../hooks/useProduct";
 import "./SearchPage.css";
 
 export const SearchPage = () => {
-  const {sortCriteria, setSortCriteria } = useProduct()
+  const {sortCriteria, setSortCriteria, getProducts, filter } = useProduct()
+
+  useEffect(() => {
+    getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
   const handleSort = (value) => {
     const newCriteria = {
       criteria: value,
