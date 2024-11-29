@@ -24,23 +24,25 @@ export const SearchPage = () => {
       <Filtro />
       <div>
         <div className="sort-layer">
-          <label htmlFor="">Ordenar por</label>
-          <button onClick={() => handleSort("price")}>
-            Precio{" "}
-            {sortCriteria.criteria === "price"
-              ? sortCriteria.asc
-                ? "↑"
-                : "↓"
-              : ""}
-          </button>
-          <button onClick={() => handleSort("rating")}>
-            Valoración{" "}
-            {sortCriteria.criteria === "rating"
-              ? sortCriteria.asc
-                ? "↑"
-                : "↓"
-              : ""}
-          </button>
+          <label htmlFor="">Ordenar por: </label>
+          <div className="btns">
+            <button onClick={() => handleSort("price")}>
+              Precio{" "}
+              {sortCriteria.criteria === "price"
+                ? sortCriteria.asc
+                  ? "↑"
+                  : "↓"
+                : ""}
+            </button>
+            <button onClick={() => handleSort("rating")}>
+              Valoración{" "}
+              {sortCriteria.criteria === "rating"
+                ? sortCriteria.asc
+                  ? "↑"
+                  : "↓"
+                : ""}
+            </button>
+          </div>
         </div>
         <ProductList />
       </div>

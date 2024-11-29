@@ -8,7 +8,7 @@
 
 ### Front
 - [x] Carta de producto.
-- [ ] Grid de productos.
+- [x] Grid de productos.
 - [x] Detalles de producto.
 - [x] Ordenar.
 - [x] Filtro.
@@ -19,10 +19,6 @@
 - [x] Modelos.
 - [x] Vistas.
 - [x] Rutas.
-
-### Opcional
-
-- [ ] Build y despliegue.
 
 
 
