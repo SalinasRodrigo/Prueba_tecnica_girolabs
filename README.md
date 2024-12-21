@@ -1,4 +1,4 @@
-# Prueba_tecnica_girolabs
+# Prueba_tecnica_girolab
 
 ## Pasos para levantar la app
 
